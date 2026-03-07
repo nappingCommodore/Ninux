@@ -3,29 +3,38 @@
 #   CC  = i686-elf-gcc
 #   LD  = i686-elf-gcc
 # For quick start on Linux, we use gcc with 32-bit flags:
-# CC  = gcc
-CC  = i686-elf-gcc
-AS  = nasm
-# LD  = gcc
-LD  = i686-elf-gcc
+
+CC	= i686-elf-gcc
+AS	= nasm
+LD	= i686-elf-gcc
 
 # ─── Compiler Flags ───────────────────────────────────────
+# -m32:                compile for 32-bit x86
+# -std=gnu99:          C99 standard with GNU extensions
+# -ffreestanding:      no standard library (we're the OS!)
+# -O2:                 optimization level 2
+# -Wall:               enable all warnings
+# -Wextra:             enable extra warnings
+# -fno-stack-protector: no stack canaries (we don't have them yet)
 CFLAGS = \
-    -m32               \  # compile for 32-bit x86
-    -std=gnu99         \  # C99 standard with GNU extensions
-    -ffreestanding     \  # no standard library (we're the OS!)
-    -O2                \  # optimization level 2
-    -Wall              \  # enable all warnings
-    -Wextra            \  # enable extra warnings
-    -fno-stack-protector  # no stack canaries (we don't have them yet)
+    -m32               \
+    -std=gnu99         \
+    -ffreestanding     \
+    -O2                \
+    -Wall              \
+    -Wextra            \
+    -fno-stack-protector
 
+# -m32:      link for 32-bit
+# -nostdlib: don't link standard libraries
+# -T:        use our custom linker script
 LDFLAGS = \
-    -m32               \  # link for 32-bit
-    -nostdlib          \  # don't link standard libraries
-    -T linker.ld          # use our custom linker script
+    -m32               \
+    -nostdlib          \
+    -T linker.ld        
 
 # ─── Output Binary ────────────────────────────────────────
-KERNEL  = mykernel.bin
+KERNEL  = ninux.bin
 OBJECTS = boot/boot.o kernel/kernel.o
 
 # ─── Default target: build the kernel ────────────────────
