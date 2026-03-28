@@ -159,7 +159,7 @@ void kernel_main(void) {
     /* Print a welcome banner */
     terminal_setcolor(vga_entry_color(VGA_COLOR_LIGHT_CYAN, VGA_COLOR_BLACK));
     terminal_writestring("╔══════════════════════════════════╗\n");
-    terminal_writestring("║      Ninux v0.1 — x86         ║\n");
+    terminal_writestring("║      Ninux v0.1 — x86            ║\n");
     terminal_writestring("╚══════════════════════════════════╝\n\n");
 
     terminal_setcolor(vga_entry_color(VGA_COLOR_LIGHT_GREEN, VGA_COLOR_BLACK));
